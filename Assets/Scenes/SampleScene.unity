@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1031964332711253964, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1152050531203980730, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
       propertyPath: m_Name
       value: Cube (1)
@@ -542,7 +546,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!1 &1012017610
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +646,7 @@ Transform:
   m_GameObject: {fileID: 1012017610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.41}
+  m_LocalPosition: {x: 0, y: 0, z: 6.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -659,6 +663,7 @@ GameObject:
   - component: {fileID: 1292526497}
   - component: {fileID: 1292526496}
   - component: {fileID: 1292526494}
+  - component: {fileID: 1292526498}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -704,7 +709,7 @@ Transform:
   m_GameObject: {fileID: 1292526493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3.03}
+  m_LocalPosition: {x: 0, y: 1, z: -3.57}
   m_LocalScale: {x: 20, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -714,6 +719,48 @@ Transform:
   - {fileID: 1447292431}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1292526498
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292526493}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1447292430
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +965,7 @@ Transform:
   m_GameObject: {fileID: 1669338898}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.25, y: 0, z: 9.5}
+  m_LocalPosition: {x: 0.213, y: 0, z: 9.5}
   m_LocalScale: {x: 20, y: 1, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -932,6 +979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1031964332711253964, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1152050531203980730, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
       propertyPath: m_Name
       value: Cube (2)
@@ -1080,7 +1131,7 @@ Transform:
   m_GameObject: {fileID: 2061762855}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.046, y: 0, z: 9.5}
+  m_LocalPosition: {x: -0.054, y: 0, z: 9.5}
   m_LocalScale: {x: 20, y: 1, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1094,6 +1145,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1031964332711253964, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1152050531203980730, guid: ca9b66434f67e544f9c5266eb79eabce, type: 3}
       propertyPath: m_Name
       value: Cube

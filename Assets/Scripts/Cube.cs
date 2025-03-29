@@ -1,21 +1,36 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer), typeof(Rigidbody))]
+
 public class Cube : MonoBehaviour
 {
-    private float _splitChance = 1f;
+    private Renderer _renderer;
+    private Rigidbody _rigidbody;
 
-    public float SplitChance => _splitChance;
+    public Rigidbody Rigidbody => _rigidbody;
+    public float SplitChance { get; private set; } = 1f;
 
-    public static event Action<GameObject> ClickDetected;
+    public event Action<Cube> ClickDetected;
 
-    public void SetSplitChance(float splitChance)
+    private void Awake()
     {
-        _splitChance = splitChance;
+        _renderer = GetComponent<Renderer>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnMouseDown()
     {
-        ClickDetected?.Invoke(transform.gameObject);
+        ClickDetected?.Invoke(this);
+    }
+
+    public void SetSplitChance(float splitChance)
+    {
+        SplitChance = splitChance;
+    }
+
+    public void SetColor(Color color)
+    {
+        _renderer.material.color = color;
     }
 }

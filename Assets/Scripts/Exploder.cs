@@ -1,12 +1,10 @@
-using UnityEngine;
-
 public class Exploder
 {
-    public static void Explosion(GameObject newCube)
+    public void Explosion(Cube newCube)
     {
         float explosionForce = 500f;
         float explosionRadius = 10f;
 
-        newCube.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, newCube.transform.position, explosionRadius);
+        newCube.Rigidbody.AddExplosionForce(explosionForce, newCube.gameObject.transform.position, explosionRadius);
     }
 }
