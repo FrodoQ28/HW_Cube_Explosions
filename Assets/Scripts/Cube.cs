@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer), typeof(Rigidbody))]
+[RequireComponent(typeof(Renderer), typeof(Rigidbody), typeof(Cube))]
 
 public class Cube : MonoBehaviour
 {
-    private Renderer _renderer;
     private Rigidbody _rigidbody;
 
+    public Renderer Renderer => GetComponent<Renderer>();
     public Rigidbody Rigidbody => _rigidbody;
     public float SplitChance { get; private set; } = 1f;
 
@@ -15,7 +15,6 @@ public class Cube : MonoBehaviour
 
     private void Awake()
     {
-        _renderer = GetComponent<Renderer>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -27,10 +26,5 @@ public class Cube : MonoBehaviour
     public void SetSplitChance(float splitChance)
     {
         SplitChance = splitChance;
-    }
-
-    public void SetColor(Color color)
-    {
-        _renderer.material.color = color;
     }
 }

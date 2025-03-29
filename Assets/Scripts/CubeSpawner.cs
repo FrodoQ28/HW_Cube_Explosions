@@ -1,35 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
-    private Cube[] _allCubes;
+    [SerializeField] private Cube _cubePrefab;
+
+    private ColorChanger _colorChanger;
+    private List<Cube> _allCubes;
     private Exploder _exploder;
 
     private void Awake()
     {
         _exploder = new Exploder();
-    }
+        _colorChanger = new ColorChanger();
+        _allCubes = new List<Cube>();
 
-    private void OnEnable()
-    {
-        _allCubes = FindObjectsOfType<Cube>();
-
-        foreach (var cube in _allCubes)
-            cube.ClickDetected += SplitCube;
+        SpawnFirstCubes();
     }
 
     private void OnDisable()
     {
-        _allCubes = FindObjectsOfType<Cube>();
-
         foreach (var cube in _allCubes)
             cube.ClickDetected -= SplitCube;
     }
 
     private void SplitCube(Cube selectedCube)
     {
+        float reductionMultiplier = 0.5f;
         Vector3 originalScale = selectedCube.transform.localScale;
-        Vector3 newScale = originalScale / 2;
+        Vector3 newScale = originalScale * reductionMultiplier;
         float originalSplitChance = selectedCube.SplitChance;
 
         if (TrySplit(originalSplitChance, out int numberOfSeparations))
@@ -41,18 +40,24 @@ public class CubeSpawner : MonoBehaviour
                 newCube.transform.localScale = newScale;
                 newCube.Rigidbody.useGravity = true;
 
-                newCube.SetSplitChance(originalSplitChance / 2);
-                newCube.SetColor(new Color(Random.value, Random.value, Random.value));
+                newCube.SetSplitChance(originalSplitChance * reductionMultiplier);
 
                 newCube.ClickDetected += SplitCube;
 
+                _colorChanger.SetColor(newCube);
                 _exploder.Explosion(newCube);
 
-                Destroy(selectedCube.gameObject);
+                _allCubes.Add(newCube);
             }
+
+            _allCubes.Remove(selectedCube);
+
+            Destroy(selectedCube.gameObject);
         }
         else
         {
+            _allCubes.Remove(selectedCube);
+
             Destroy(selectedCube.gameObject);
         }
     }
@@ -73,6 +78,20 @@ public class CubeSpawner : MonoBehaviour
             numberOfSeparations = 0;
 
             return false;
+        }
+    }
+
+    public void SpawnFirstCubes()
+    {
+        int cubeCount = 3;
+
+        for (int i = 0; i < cubeCount; i++)
+        {
+            Cube newCube = Instantiate(_cubePrefab, _cubePrefab.transform.position, Quaternion.identity);
+
+            newCube.ClickDetected += SplitCube;
+
+            _allCubes.Add(newCube);
         }
     }
 }
